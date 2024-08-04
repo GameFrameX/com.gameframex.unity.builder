@@ -69,6 +69,14 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.IsIncrementalBuildPackage = Convert.ToBoolean(commandLineArgs[index + 1]);
                 }
+                else if (commandLineArg == "-IsUploadLogFile")
+                {
+                    _builderOptions.IsUploadLogFile = Convert.ToBoolean(commandLineArgs[index + 1]);
+                }
+                else if (commandLineArg == "-IsUploadApk")
+                {
+                    _builderOptions.IsUploadApk = Convert.ToBoolean(commandLineArgs[index + 1]);
+                }
             }
 
             Debug.Log(_builderOptions);
@@ -88,8 +96,15 @@ namespace GameFrameX.Builder.Editor
         public static void BuildApk()
         {
             var apkPath = BuildProductHelper.BuildPlayerAndroid();
-            ObjectStorageUploadManager.UploadFile(apkPath);
-            ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+            if (_builderOptions.IsUploadApk)
+            {
+                ObjectStorageUploadManager.UploadFile(apkPath);
+            }
+
+            if (_builderOptions.IsUploadLogFile)
+            {
+                ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+            }
         }
 
         /// <summary>
@@ -109,7 +124,10 @@ namespace GameFrameX.Builder.Editor
             PrebuildCommand.GenerateAll();
             // 复制AOT代码
             BuildHotfixHelper.CopyAOTCode();
-            ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+            if (_builderOptions.IsUploadLogFile)
+            {
+                ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+            }
         }
 
         /// <summary>
@@ -133,9 +151,12 @@ namespace GameFrameX.Builder.Editor
             buildParameters.EnableSharePackRule = true;
             buildParameters.BuildinFileCopyParams = buildInFileCopyParams;
             buildParameters.EncryptionServices = new EncryptionNone();
+            bool isSuccess = false;
+
             try
             {
                 pipeline.Run(buildParameters, true);
+                isSuccess = true;
             }
             catch (Exception e)
             {
@@ -144,7 +165,19 @@ namespace GameFrameX.Builder.Editor
             }
             finally
             {
-                ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+                if (_builderOptions.IsUploadLogFile)
+                {
+                    ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+                }
+
+                if (isSuccess)
+                {
+                    if (_builderOptions.IsUploadAsset)
+                    {
+                        ObjectStorageUploadManager.SetSavePath(_builderOptions.UploadAssetSavePath);
+                        ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.PackageVersion}");
+                    }
+                }
             }
         }
     }
