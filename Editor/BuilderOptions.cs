@@ -42,7 +42,7 @@ namespace GameFrameX.Builder.Editor
         /// <summary>
         /// 资源包名称。只有调用BuildAsset 的时候有效
         /// </summary>
-        public string PackageName { get; set; } = string.Empty;
+        public string PackageName { get; set; } ;
 
         /// <summary>
         /// 是否使用增量构建的方式构建。只有调用BuildAsset 的时候有效
@@ -63,6 +63,11 @@ namespace GameFrameX.Builder.Editor
         /// 是否上传APK,只有调用BuildApk 的时候有效
         /// </summary>
         public bool IsUploadApk { get; set; } = false;
+
+        public BuilderOptions()
+        {
+            PackageName = "DefaultPackage";
+        }
 
         public override string ToString()
         {
