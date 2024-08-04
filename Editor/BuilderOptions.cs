@@ -37,22 +37,22 @@ namespace GameFrameX.Builder.Editor
         /// <summary>
         /// 是否上传日志文件
         /// </summary>
-        public bool IsUploadLogFile { get; set; } = false;
+        public bool IsUploadLogFile { get; set; }
 
         /// <summary>
         /// 资源包名称。只有调用BuildAsset 的时候有效
         /// </summary>
-        public string PackageName { get; set; } ;
+        public string PackageName { get; set; }
 
         /// <summary>
         /// 是否使用增量构建的方式构建。只有调用BuildAsset 的时候有效
         /// </summary>
-        public bool IsIncrementalBuildPackage { get; set; } = false;
+        public bool IsIncrementalBuildPackage { get; set; }
 
         /// <summary>
         /// 是否上传资源
         /// </summary>
-        public bool IsUploadAsset { get; set; } = false;
+        public bool IsUploadAsset { get; set; }
 
         /// <summary>
         /// 上传资源存储路径
@@ -62,11 +62,16 @@ namespace GameFrameX.Builder.Editor
         /// <summary>
         /// 是否上传APK,只有调用BuildApk 的时候有效
         /// </summary>
-        public bool IsUploadApk { get; set; } = false;
+        public bool IsUploadApk { get; set; }
 
         public BuilderOptions()
         {
             PackageName = "DefaultPackage";
+            IsUploadLogFile = false;
+            IsIncrementalBuildPackage = false;
+            IsUploadAsset = false;
+            IsUploadApk = false;
+            UploadAssetSavePath = string.Empty;
         }
 
         public override string ToString()
