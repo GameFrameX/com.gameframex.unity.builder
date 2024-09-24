@@ -1,0 +1,28 @@
+name: Sync Github To Image
+
+on:
+  push:
+    tags:
+      - '*'
+#    branches: [main]
+  #schedule:
+    # 定时任务，每天 UTC 时间 0 点运行
+    #- cron: "0 0 * * *"
+  #workflow_dispatch:
+
+jobs:
+  tags:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
+
+      - name: package.json info
+        id: info
+        uses: jaywcjlove/github-action-package@main
+      - run: echo "version - ${{ steps.info.outputs.version }}"
