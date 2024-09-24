@@ -15,15 +15,18 @@ namespace GameFrameX.Builder.Editor
     /// </summary>
     public static class Builder
     {
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
         private static readonly IObjectStorageUploadManager ObjectStorageUploadManager;
-
+#endif
         private static BuilderOptions _builderOptions;
 
         static Builder()
         {
             BuildParamsParse();
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
             ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<QiNiuYunObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName);
             ObjectStorageUploadManager.SetSavePath($"builder/{PlayerSettings.productName}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{_builderOptions.JobName}/{Application.version}/{_builderOptions.BuildNumber}");
+#endif
         }
 
 
@@ -98,12 +101,16 @@ namespace GameFrameX.Builder.Editor
             var apkPath = BuildProductHelper.BuildPlayerAndroid();
             if (_builderOptions.IsUploadApk)
             {
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
                 ObjectStorageUploadManager.UploadFile(apkPath);
+#endif
             }
 
             if (_builderOptions.IsUploadLogFile)
             {
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
                 ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+#endif
             }
         }
 
@@ -126,7 +133,9 @@ namespace GameFrameX.Builder.Editor
             BuildHotfixHelper.CopyAOTCode();
             if (_builderOptions.IsUploadLogFile)
             {
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
                 ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+#endif
             }
         }
 
@@ -167,15 +176,19 @@ namespace GameFrameX.Builder.Editor
             {
                 if (_builderOptions.IsUploadLogFile)
                 {
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
                     ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+#endif
                 }
 
                 if (isSuccess)
                 {
                     if (_builderOptions.IsUploadAsset)
                     {
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
                         ObjectStorageUploadManager.SetSavePath(_builderOptions.UploadAssetSavePath);
                         ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.PackageVersion}");
+#endif
                     }
                 }
             }

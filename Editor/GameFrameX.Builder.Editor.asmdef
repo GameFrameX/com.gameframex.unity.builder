@@ -1,6 +1,5 @@
 {
     "name": "GameFrameX.Builder.Editor",
-    "rootNamespace": "GameFrameX.Builder.Editor",
     "references": [
         "GameFrameX.Runtime",
         "GameFrameX.Editor",
@@ -19,6 +18,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.gameframex.unity.objectstorage",
+            "expression": "",
+            "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE"
+        }
+    ],
     "noEngineReferences": false
 }
