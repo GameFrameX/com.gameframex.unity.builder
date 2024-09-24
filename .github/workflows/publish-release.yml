@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
       - name: change-version-by-tag
-        uses: AlianBlank/github-action-tag-version@0.0.1
+        uses: AlianBlank/github-action-tag-version@0.0.2
         with:
           version: ${{ github.ref_name }}
       - run: echo "version - ${{ steps.info.outputs.currentVersion }}"
