@@ -25,4 +25,6 @@ jobs:
       - name: package.json info
         id: info
         uses: jaywcjlove/github-action-package@main
+        with:
+          version: ${{ github.ref_name }}
       - run: echo "version - ${{ steps.info.outputs.version }}"
