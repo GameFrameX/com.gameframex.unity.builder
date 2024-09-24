@@ -30,10 +30,3 @@ jobs:
           release: true
           commit: '[修改]1. 更新版本号'
       - run: echo "version - ${{ steps.info.outputs.version }}"
-        
-      - name: Generate Changelog
-        id: changelog
-        uses: jaywcjlove/changelog-generator@main
-        with:
-          head-ref: ${{steps.create_tag.outputs.version}}
-          filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
