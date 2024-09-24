@@ -22,11 +22,8 @@ jobs:
         with:
           fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
-      - name: package.json info
-        id: info
-        uses: jaywcjlove/github-action-package@main
+      - name: change-version-by-tag
+        uses: AlianBlank/github-action-tag-version@0.0.1
         with:
           version: ${{ github.ref_name }}
-          release: true
-          commit: '[修改]1. 更新版本号'
-      - run: echo "version - ${{ steps.info.outputs.version }}"
+      - run: echo "version - ${{ steps.info.outputs.currentVersion }}"
