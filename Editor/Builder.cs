@@ -1,7 +1,9 @@
 using System;
 using GameFrameX.Editor;
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
 using GameFrameX.ObjectStorage.Editor;
 using GameFrameX.ObjectStorage.QiNiu.Editor;
+#endif
 using HybridCLR.Editor.Commands;
 using HybridCLR.Editor.Installer;
 using UnityEditor;
