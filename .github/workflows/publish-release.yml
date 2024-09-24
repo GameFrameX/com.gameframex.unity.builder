@@ -31,10 +31,9 @@ jobs:
           git config --global user.name "AlianBlank"
 
       - name: change-version-by-tag
-        uses: AlianBlank/github-action-tag-version@0.0.6
+        uses: AlianBlank/github-action-tag-version@1.0.0
         with:
           version: ${{ github.ref_name }}
-          branch_name: test
           
       - name: Push changes
         uses: ad-m/github-push-action@master
