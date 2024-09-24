@@ -4,8 +4,8 @@ on:
   push:
     tags:
       - '*'
-#    branches: [main]
-  #schedule:
+    #    branches: [main]
+    #schedule:
     # 定时任务，每天 UTC 时间 0 点运行
     #- cron: "0 0 * * *"
   #workflow_dispatch:
@@ -22,6 +22,11 @@ jobs:
         with:
           fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
+      - name: Set up Git user
+        run: |
+          git config --global user.email "wangfj11@foxmail.com"
+          git config --global user.name "AlianBlank"
+      
       - name: change-version-by-tag
         uses: AlianBlank/github-action-tag-version@0.0.6
         with:
