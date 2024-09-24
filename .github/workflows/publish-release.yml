@@ -39,4 +39,12 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
             branch: ${{ github.head_ref }}
-#      - run: echo "version - ${{ steps.info.outputs.currentVersion }}"
+            
+
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "✏️ Generate release changelog"
+        uses: heinrichreimer/action-github-changelog-generator@v2.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
