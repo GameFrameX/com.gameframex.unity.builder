@@ -31,10 +31,6 @@ jobs:
           commit: '[修改]1. 更新版本号'
       - run: echo "version - ${{ steps.info.outputs.version }}"
         
-      - name: get tag version
-        id: tag_version
-        uses: jaywcjlove/changelog-generator@main
-
       - name: Generate Changelog
         id: changelog
         uses: jaywcjlove/changelog-generator@main
