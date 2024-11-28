@@ -10,6 +10,11 @@ namespace GameFrameX.Builder.Editor
         public string LogFilePath { get; set; } = string.Empty;
 
         /// <summary>
+        /// 执行方法
+        /// </summary>
+        public string ExecuteMethod { get; set; } = string.Empty;
+
+        /// <summary>
         /// 构建号
         /// </summary>
         public string BuildNumber { get; set; } = string.Empty;
@@ -66,7 +71,7 @@ namespace GameFrameX.Builder.Editor
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
     }
 }

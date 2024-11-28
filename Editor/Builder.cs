@@ -46,6 +46,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.LogFilePath = commandLineArgs[index + 1].Replace("/Unity/", "/");
                 }
+                else if (commandLineArg == "-executeMethod")
+                {
+                    _builderOptions.ExecuteMethod = commandLineArgs[index + 1].Trim();
+                }
                 else if (commandLineArg == "-BUILD_NUMBER")
                 {
                     _builderOptions.BuildNumber = commandLineArgs[index + 1];
@@ -84,7 +88,25 @@ namespace GameFrameX.Builder.Editor
                 }
             }
 
+            if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())
+            {
+                throw new Exception("executeMethod is null");
+            }
+
+            if (_builderOptions.BuildNumber.IsNullOrWhiteSpace())
+            {
+                throw new Exception("build number is null");
+            }
+
+            if (_builderOptions.LogFilePath.IsNullOrWhiteSpace())
+            {
+                var split = _builderOptions.ExecuteMethod.Split(new[] { ".", }, StringSplitOptions.RemoveEmptyEntries);
+                _builderOptions.LogFilePath = $"../Logs/{split[split.Length - 1]}_{_builderOptions.BuildNumber}.log";
+            }
+
+            Debug.Log("-----------构建参数开始-----------");
             Debug.Log(_builderOptions);
+            Debug.Log("-----------构建参数结束-----------");
         }
 
         public static void BuildDouYin()
