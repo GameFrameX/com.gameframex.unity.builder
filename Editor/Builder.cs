@@ -98,15 +98,15 @@ namespace GameFrameX.Builder.Editor
                 }
                 else if (commandLineArg == "-IsIncrementalBuildPackage")
                 {
-                    _builderOptions.IsIncrementalBuildPackage = Convert.ToBoolean(commandLineArgs[index + 1]);
+                    _builderOptions.IsIncrementalBuildPackage = true;
                 }
                 else if (commandLineArg == "-IsUploadLogFile")
                 {
-                    _builderOptions.IsUploadLogFile = Convert.ToBoolean(commandLineArgs[index + 1]);
+                    _builderOptions.IsUploadLogFile = true;
                 }
                 else if (commandLineArg == "-IsUploadApk")
                 {
-                    _builderOptions.IsUploadApk = Convert.ToBoolean(commandLineArgs[index + 1]);
+                    _builderOptions.IsUploadApk = true;
                 }
             }
 
