@@ -241,7 +241,7 @@ namespace GameFrameX.Builder.Editor
                     {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
                         ObjectStorageUploadManager.SetSavePath($"Bundles/{PlayerSettings.applicationIdentifier}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{Application.version}/{_builderOptions.ChannelName}/{_builderOptions.PackageName}/{buildParameters.PackageVersion}");
-                        ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.PackageName}/{buildParameters.PackageVersion}");
+                        ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.BuildTarget.ToString()}/{buildParameters.PackageName}/{buildParameters.PackageVersion}");
 #endif
                     }
                 }
