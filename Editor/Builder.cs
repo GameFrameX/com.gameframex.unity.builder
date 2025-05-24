@@ -92,6 +92,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.PackageName = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-ChannelName")
+                {
+                    _builderOptions.ChannelName = commandLineArgs[index + 1];
+                }
                 else if (commandLineArg == "-IsIncrementalBuildPackage")
                 {
                     _builderOptions.IsIncrementalBuildPackage = Convert.ToBoolean(commandLineArgs[index + 1]);

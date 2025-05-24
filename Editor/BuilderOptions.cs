@@ -40,6 +40,11 @@ namespace GameFrameX.Builder.Editor
         public string JobName { get; set; } = string.Empty;
 
         /// <summary>
+        /// 渠道名称,默认为default
+        /// </summary>
+        public string ChannelName { get; set; } = "default";
+
+        /// <summary>
         /// 是否上传日志文件
         /// </summary>
         public bool IsUploadLogFile { get; set; } = false;
