@@ -2,7 +2,15 @@ using System;
 using GameFrameX.Editor;
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
 using GameFrameX.ObjectStorage.Editor;
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_TENCENT
+using GameFrameX.ObjectStorage.Tencent.Editor;
+#endif
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_QI_NIU
 using GameFrameX.ObjectStorage.QiNiu.Editor;
+#endif
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_A_LI_YUN
+using GameFrameX.ObjectStorage.ALiYun.Editor;
+#endif
 #endif
 using HybridCLR.Editor.Commands;
 using HybridCLR.Editor.Installer;
@@ -26,7 +34,17 @@ namespace GameFrameX.Builder.Editor
         {
             BuildParamsParse();
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_QI_NIU
             ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<QiNiuYunObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName);
+#endif
+
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_TENCENT
+            ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<TencentCloudObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName);
+#endif
+
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_A_LI_YUN
+            ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<ALiYunObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName);
+#endif
             ObjectStorageUploadManager.SetSavePath($"builder/{PlayerSettings.productName}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{_builderOptions.JobName}/{Application.version}/{_builderOptions.BuildNumber}");
 #endif
         }
