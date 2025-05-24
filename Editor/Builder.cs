@@ -232,7 +232,7 @@ namespace GameFrameX.Builder.Editor
                     if (_builderOptions.IsUploadAsset)
                     {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                        ObjectStorageUploadManager.SetSavePath(_builderOptions.UploadAssetSavePath);
+                        ObjectStorageUploadManager.SetSavePath($"Bundles/{PlayerSettings.applicationIdentifier}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{Application.version}/{_builderOptions.ChannelName}/{_builderOptions.PackageName}/{buildParameters.PackageVersion}");
                         ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.PackageVersion}");
 #endif
                     }
