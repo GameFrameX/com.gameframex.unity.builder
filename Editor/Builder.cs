@@ -88,6 +88,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.ObjectStorageBucketName = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-ObjectStorageEndPoint")
+                {
+                    _builderOptions.ObjectStorageEndPoint = commandLineArgs[index + 1];
+                }
                 else if (commandLineArg == "-PackageName")
                 {
                     _builderOptions.PackageName = commandLineArgs[index + 1];

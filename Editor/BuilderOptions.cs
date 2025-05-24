@@ -35,6 +35,11 @@ namespace GameFrameX.Builder.Editor
         public string ObjectStorageBucketName { get; set; } = string.Empty;
 
         /// <summary>
+        /// 对象存储桶的区域名称
+        /// </summary>
+        public string ObjectStorageEndPoint { get; set; } = string.Empty;
+        
+        /// <summary>
         /// 任务名称
         /// </summary>
         public string JobName { get; set; } = string.Empty;
