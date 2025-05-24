@@ -1,29 +1,46 @@
 {
-    "name": "GameFrameX.Builder.Editor",
-    "references": [
-        "GameFrameX.Runtime",
-        "GameFrameX.Editor",
-        "HybridCLR.Editor",
-        "YooAsset.Editor",
-        "YooAsset.Runtime",
-        "GameFrameX.ObjectStorage.Editor",
-        "GameFrameX.ObjectStorage.QiNiu.Editor"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "com.gameframex.unity.objectstorage",
-            "expression": "",
-            "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE"
-        }
-    ],
-    "noEngineReferences": false
+  "name": "GameFrameX.Builder.Editor",
+  "references": [
+    "GameFrameX.Runtime",
+    "GameFrameX.Editor",
+    "HybridCLR.Editor",
+    "YooAsset.Editor",
+    "YooAsset.Runtime",
+    "GameFrameX.ObjectStorage.Editor",
+    "GameFrameX.ObjectStorage.QiNiu.Editor",
+    "GameFrameX.ObjectStorage.Tencent.Editor",
+    "GameFrameX.ObjectStorage.ALiYun.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [
+    {
+      "name": "com.gameframex.unity.objectstorage",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE"
+    },
+    {
+      "name": "com.gameframex.unity.objectstorage.tencent",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE_TENCENT"
+    },
+    {
+      "name": "com.gameframex.unity.objectstorage.aliyun",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE_A_LI_YUN"
+    },
+    {
+      "name": "com.gameframex.unity.objectstorage.qiniu",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE_QI_NIU"
+    }
+  ],
+  "noEngineReferences": false
 }
