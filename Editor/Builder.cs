@@ -108,6 +108,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.IsUploadLogFile = true;
                 }
+                else if (commandLineArg == "-IsUploadAsset")
+                {
+                    _builderOptions.IsUploadAsset = true;
+                }
                 else if (commandLineArg == "-IsUploadApk")
                 {
                     _builderOptions.IsUploadApk = true;
