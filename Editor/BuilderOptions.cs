@@ -65,11 +65,6 @@ namespace GameFrameX.Builder.Editor
         public bool IsUploadAsset { get; set; } = false;
 
         /// <summary>
-        /// 上传资源存储路径
-        /// </summary>
-        public string UploadAssetSavePath { get; set; } = string.Empty;
-
-        /// <summary>
         /// 是否上传APK,只有调用BuildApk 的时候有效
         /// </summary>
         public bool IsUploadApk { get; set; } = false;
