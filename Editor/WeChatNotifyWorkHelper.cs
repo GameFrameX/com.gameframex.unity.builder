@@ -7,6 +7,7 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using UnityEngine;
 using YooAsset.Editor;
 
 namespace GameFrameX.Builder.Editor
@@ -34,11 +35,12 @@ namespace GameFrameX.Builder.Editor
                 {
                     // 使用同步方式发送HTTP请求
                     var httpResponseMessage = httpClient.PostAsync(url, stringContent).GetAwaiter().GetResult();
-                    Console.WriteLine(httpResponseMessage.ToString());
+                    var response = httpResponseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    Debug.Log(response);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Debug.LogException(e);
                 }
             }
         }

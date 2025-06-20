@@ -46,7 +46,8 @@ namespace GameFrameX.Builder.Editor
                 {
                     // 使用同步方式发送HTTP请求
                     var httpResponseMessage = httpClient.PostAsync(url, stringContent).GetAwaiter().GetResult();
-                    Debug.Log(httpResponseMessage.ToString());
+                    var response = httpResponseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    Debug.Log(response);
                     return true;
                 }
                 catch (Exception e)
