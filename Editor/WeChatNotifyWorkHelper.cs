@@ -26,7 +26,7 @@ namespace GameFrameX.Builder.Editor
                 var content = $@"{{
          ""msgtype"": ""markdown"",
          ""markdown"": {{
-             ""content"": ""### 游戏资源版本更新\n> 时间：{DateTime.Now:yyyy-MM-dd HH:mm:ss}\n> 资源版本:{buildParameters.PackageVersion}  \n> 资源包名:{buildParameters.PackageName} \n> 资源平台:{buildParameters.BuildTarget.ToString()} \n> 渠道:{builderOptions.ChannelName} \n> 资源语言:{builderOptions.Language}\n""
+             ""content"": ""### 游戏资源版本更新\n> 时间：{DateTime.Now:yyyy-MM-dd HH:mm:ss}\n> 资源版本:{buildParameters.PackageVersion}\n> 游戏版本:{UnityEngine.Application.version} 游戏包名:{UnityEngine.Application.identifier}  \n> 资源包名:{buildParameters.PackageName} \n> 资源平台:{buildParameters.BuildTarget.ToString()} \n> 渠道:{builderOptions.ChannelName} \n> 资源语言:{builderOptions.Language}\n""
          }}
      }}";
                 var stringContent = new StringContent(content, Encoding.UTF8, "application/json");
