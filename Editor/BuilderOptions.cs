@@ -90,6 +90,11 @@ namespace GameFrameX.Builder.Editor
         public string Language { get; set; } = "default";
 
         /// <summary>
+        /// 微信机器人key
+        /// </summary>
+        public string WeChatBotKey { get; set; }
+
+        /// <summary>
         /// 是否上传APK,只有调用BuildApk 的时候有效
         /// </summary>
         public bool IsUploadApk { get; set; } = false;

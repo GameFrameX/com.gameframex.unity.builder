@@ -132,6 +132,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.Language = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-WeChatBotKey")
+                {
+                    _builderOptions.WeChatBotKey = commandLineArgs[index + 1];
+                }
             }
 
             if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())
@@ -265,7 +269,11 @@ namespace GameFrameX.Builder.Editor
 
                     if (_builderOptions.IsUpdateAssetPackageVersion)
                     {
-                        BuilderUpdateAssetPackageVersionHelper.Run(buildParameters, _builderOptions);
+                        var result = BuilderUpdateAssetPackageVersionHelper.Run(buildParameters, _builderOptions);
+                        if (result)
+                        {
+                            WeChatNotifyWorkHelper.Run(buildParameters, _builderOptions);
+                        }
                     }
                 }
             }

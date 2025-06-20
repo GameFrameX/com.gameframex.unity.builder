@@ -23,7 +23,7 @@ namespace GameFrameX.Builder.Editor
         /// </summary>
         /// <param name="buildParameters"></param>
         /// <param name="builderOptions"></param>
-        public static void Run(BuildParameters buildParameters, BuilderOptions builderOptions)
+        public static bool Run(BuildParameters buildParameters, BuilderOptions builderOptions)
         {
             using (var httpClient = new HttpClient())
             {
@@ -47,12 +47,15 @@ namespace GameFrameX.Builder.Editor
                     // 使用同步方式发送HTTP请求
                     var httpResponseMessage = httpClient.PostAsync(url, stringContent).GetAwaiter().GetResult();
                     Debug.Log(httpResponseMessage.ToString());
+                    return true;
                 }
                 catch (Exception e)
                 {
                     Debug.LogException(e);
                 }
             }
+
+            return false;
         }
 
         /// <summary>
