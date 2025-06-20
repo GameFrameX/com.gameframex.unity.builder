@@ -116,6 +116,22 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.IsUploadApk = true;
                 }
+                else if (commandLineArg == "-IsUpdateAssetPackageVersion")
+                {
+                    _builderOptions.IsUpdateAssetPackageVersion = true;
+                }
+                else if (commandLineArg == "-UpdateAssetPackageVersionUrl")
+                {
+                    _builderOptions.UpdateAssetPackageVersionUrl = commandLineArgs[index + 1];
+                }
+                else if (commandLineArg == "-UpdateAssetPackageVersionAuthorization")
+                {
+                    _builderOptions.UpdateAssetPackageVersionAuthorization = commandLineArgs[index + 1];
+                }
+                else if (commandLineArg == "-Language")
+                {
+                    _builderOptions.Language = commandLineArgs[index + 1];
+                }
             }
 
             if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())
@@ -245,6 +261,11 @@ namespace GameFrameX.Builder.Editor
                         ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.BuildTarget.ToString()}/{Application.version}/{buildParameters.PackageName}/{buildParameters.PackageVersion}");
 #endif
                         Debug.Log($"结束上传资源包=>{buildParameters.PackageName}--{buildParameters.PackageVersion}");
+                    }
+
+                    if (_builderOptions.IsUpdateAssetPackageVersion)
+                    {
+                        BuilderUpdateAssetPackageVersionHelper.Run(buildParameters, _builderOptions);
                     }
                 }
             }

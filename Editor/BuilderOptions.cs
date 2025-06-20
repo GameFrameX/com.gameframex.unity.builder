@@ -38,7 +38,7 @@ namespace GameFrameX.Builder.Editor
         /// 对象存储桶的区域名称
         /// </summary>
         public string ObjectStorageEndPoint { get; set; } = string.Empty;
-        
+
         /// <summary>
         /// 任务名称
         /// </summary>
@@ -68,6 +68,26 @@ namespace GameFrameX.Builder.Editor
         /// 是否上传资源
         /// </summary>
         public bool IsUploadAsset { get; set; } = false;
+
+        /// <summary>
+        /// 是否更新资源包版本
+        /// </summary>
+        public bool IsUpdateAssetPackageVersion { get; set; } = false;
+
+        /// <summary>
+        /// 更新资源包版本的url
+        /// </summary>
+        public string UpdateAssetPackageVersionUrl { get; set; }
+
+        /// <summary>
+        /// 更新资源包版本的授权
+        /// </summary>
+        public string UpdateAssetPackageVersionAuthorization { get; set; }
+
+        /// <summary>
+        /// 语言
+        /// </summary>
+        public string Language { get; set; } = "default";
 
         /// <summary>
         /// 是否上传APK,只有调用BuildApk 的时候有效
