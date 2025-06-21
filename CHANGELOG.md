@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.11](https://github.com/GameFrameX/com.gameframex.unity.builder/tree/1.0.11) (2025-06-20)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.builder/compare/1.0.10...1.0.11)
+
 ## [1.0.10](https://github.com/GameFrameX/com.gameframex.unity.builder/tree/1.0.10) (2025-06-07)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.builder/compare/1.0.9...1.0.10)
