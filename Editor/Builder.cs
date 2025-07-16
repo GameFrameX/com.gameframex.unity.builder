@@ -260,9 +260,13 @@ namespace GameFrameX.Builder.Editor
                     if (_builderOptions.IsUploadAsset)
                     {
                         Debug.Log($"开始上传资源包=>{buildParameters.PackageName}--{buildParameters.PackageVersion}");
+                        string savePath = $"Bundles/{PlayerSettings.applicationIdentifier}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{Application.version}/{_builderOptions.ChannelName}/{_builderOptions.PackageName}/{buildParameters.PackageVersion}";
+                        string uploadPath = $"{buildParameters.BuildOutputRoot}/{buildParameters.BuildTarget.ToString()}/{Application.version}/{buildParameters.PackageName}/{buildParameters.PackageVersion}";
+                        Debug.Log($"资源包存储路径=>{savePath}");
+                        Debug.Log($"资源包上传路径=>{uploadPath}");
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                        ObjectStorageUploadManager.SetSavePath($"Bundles/{PlayerSettings.applicationIdentifier}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{Application.version}/{_builderOptions.ChannelName}/{_builderOptions.PackageName}/{buildParameters.PackageVersion}");
-                        ObjectStorageUploadManager.UploadDirectory($"{buildParameters.BuildOutputRoot}/{buildParameters.BuildTarget.ToString()}/{Application.version}/{buildParameters.PackageName}/{buildParameters.PackageVersion}");
+                        ObjectStorageUploadManager.SetSavePath(savePath);
+                        ObjectStorageUploadManager.UploadDirectory(uploadPath);
 #endif
                         Debug.Log($"结束上传资源包=>{buildParameters.PackageName}--{buildParameters.PackageVersion}");
                     }
