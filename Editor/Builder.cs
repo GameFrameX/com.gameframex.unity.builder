@@ -199,12 +199,16 @@ namespace GameFrameX.Builder.Editor
                 installerController.InstallDefaultHybridCLR();
             }
 
+            AssetDatabase.Refresh();
             // 复制热更新程序集
             BuildHotfixHelper.CopyHotfixCode();
+            AssetDatabase.Refresh();
             // 构建热更新代理
             PrebuildCommand.GenerateAll();
+            AssetDatabase.Refresh();
             // 复制AOT代码
             BuildHotfixHelper.CopyAOTCode();
+            AssetDatabase.Refresh();
             if (_builderOptions.IsUploadLogFile)
             {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
