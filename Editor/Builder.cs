@@ -12,8 +12,10 @@ using GameFrameX.ObjectStorage.QiNiu.Editor;
 using GameFrameX.ObjectStorage.ALiYun.Editor;
 #endif
 #endif
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
 using HybridCLR.Editor.Commands;
 using HybridCLR.Editor.Installer;
+#endif
 using UnityEditor;
 using UnityEngine;
 using YooAsset.Editor;
@@ -193,18 +195,21 @@ namespace GameFrameX.Builder.Editor
         /// </summary>
         public static void BuildReady()
         {
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
             var installerController = new InstallerController();
             if (!installerController.HasInstalledHybridCLR())
             {
                 installerController.InstallDefaultHybridCLR();
             }
-
+#endif
             AssetDatabase.Refresh();
             // 复制热更新程序集
             BuildHotfixHelper.CopyHotfixCode();
             AssetDatabase.Refresh();
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
             // 构建热更新代理
             PrebuildCommand.GenerateAll();
+#endif
             AssetDatabase.Refresh();
             // 复制AOT代码
             BuildHotfixHelper.CopyAOTCode();

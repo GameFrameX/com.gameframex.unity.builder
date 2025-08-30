@@ -40,6 +40,11 @@
       "name": "com.gameframex.unity.objectstorage.qiniu",
       "expression": "",
       "define": "ENABLE_GAME_FRAME_X_OBJECT_STORAGE_QI_NIU"
+    },
+    {
+      "name": "com.code-philosophy.hybridclr",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_HYBRID_CLR"
     }
   ],
   "noEngineReferences": false
