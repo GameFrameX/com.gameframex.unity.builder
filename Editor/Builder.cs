@@ -142,6 +142,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.BundleId = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-AppVersion")
+                {
+                    _builderOptions.AppVersion = commandLineArgs[index + 1];
+                }
             }
 
             if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())
@@ -166,6 +170,11 @@ namespace GameFrameX.Builder.Editor
             if (!_builderOptions.BundleId.IsNullOrWhiteSpace())
             {
                 PlayerSettings.applicationIdentifier = _builderOptions.BundleId.Trim();
+            }
+
+            if (!_builderOptions.AppVersion.IsNullOrWhiteSpace())
+            {
+                PlayerSettings.bundleVersion = _builderOptions.AppVersion.Trim();
             }
         }
 

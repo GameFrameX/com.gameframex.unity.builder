@@ -55,6 +55,11 @@ namespace GameFrameX.Builder.Editor
         public string BundleId { get; set; } = string.Empty;
 
         /// <summary>
+        /// 程序版本号,默认值为空，如果为空则使用项目的程序版本号
+        /// </summary>
+        public string AppVersion { get; set; } = string.Empty;
+
+        /// <summary>
         /// 是否上传日志文件
         /// </summary>
         public bool IsUploadLogFile { get; set; } = false;
