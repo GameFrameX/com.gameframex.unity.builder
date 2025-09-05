@@ -50,6 +50,11 @@ namespace GameFrameX.Builder.Editor
         public string ChannelName { get; set; } = "default";
 
         /// <summary>
+        /// 包名,默认值为空，如果为空则使用项目的包名
+        /// </summary>
+        public string BundleId { get; set; } = string.Empty;
+
+        /// <summary>
         /// 是否上传日志文件
         /// </summary>
         public bool IsUploadLogFile { get; set; } = false;

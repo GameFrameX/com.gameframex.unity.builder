@@ -138,6 +138,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.WeChatBotKey = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-BundleId")
+                {
+                    _builderOptions.BundleId = commandLineArgs[index + 1];
+                }
             }
 
             if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())
@@ -159,6 +163,10 @@ namespace GameFrameX.Builder.Editor
             Debug.Log("-----------构建参数开始-----------");
             Debug.Log(_builderOptions);
             Debug.Log("-----------构建参数结束-----------");
+            if (!_builderOptions.BundleId.IsNullOrWhiteSpace())
+            {
+                PlayerSettings.applicationIdentifier = _builderOptions.BundleId.Trim();
+            }
         }
 
         public static void BuildDouYin()
