@@ -18,6 +18,7 @@ using HybridCLR.Editor.Installer;
 #endif
 using UnityEditor;
 using UnityEngine;
+using YooAsset;
 using YooAsset.Editor;
 
 namespace GameFrameX.Builder.Editor
@@ -244,10 +245,10 @@ namespace GameFrameX.Builder.Editor
         /// </summary>
         public static void BuildAsset()
         {
-            var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline);
+            var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline.ToString());
             BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
             BuildParameters buildParameters = new BuiltinBuildParameters();
-            buildParameters.BuildMode = _builderOptions.IsIncrementalBuildPackage ? EBuildMode.IncrementalBuild : EBuildMode.ForceRebuild;
+            buildParameters.ClearBuildCacheFiles = !_builderOptions.IsIncrementalBuildPackage;
             buildParameters.BuildTarget = EditorUserBuildSettings.activeBuildTarget;
             buildParameters.PackageVersion = DateTime.Now.ToString("yyyyMMddHHmmss");
             buildParameters.VerifyBuildingResult = true;

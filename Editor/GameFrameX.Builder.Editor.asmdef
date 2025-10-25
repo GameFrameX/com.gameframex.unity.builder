@@ -6,6 +6,7 @@
     "HybridCLR.Editor",
     "YooAsset.Editor",
     "YooAsset.Runtime",
+    "YooAsset",
     "GameFrameX.ObjectStorage.Editor",
     "GameFrameX.ObjectStorage.QiNiu.Editor",
     "GameFrameX.ObjectStorage.Tencent.Editor",
