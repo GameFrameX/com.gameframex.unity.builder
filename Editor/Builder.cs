@@ -263,6 +263,7 @@ namespace GameFrameX.Builder.Editor
         /// </summary>
         public static void BuildAsset()
         {
+            Debug.Log("BuildAsset");
             var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline.ToString());
             BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
             BuildParameters buildParameters = new BuiltinBuildParameters();
@@ -285,6 +286,7 @@ namespace GameFrameX.Builder.Editor
             try
             {
                 pipeline.Run(buildParameters, true);
+                Debug.Log("BuildAsset End");
                 isSuccess = true;
             }
             catch (Exception e)
@@ -294,6 +296,7 @@ namespace GameFrameX.Builder.Editor
             }
             finally
             {
+                Debug.Log($"BuildAsset Finally IsSuccess={isSuccess}");
                 if (_builderOptions.IsUploadLogFile)
                 {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
