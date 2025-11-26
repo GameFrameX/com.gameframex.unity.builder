@@ -219,8 +219,8 @@ namespace GameFrameX.Builder.Editor
             Debug.Log("BuildReady Start HybridCLR");
             var installerController = new InstallerController();
             var isInstalled = installerController.HasInstalledHybridCLR();
-            Debug.Log("BuildReady Check HybridCLR Install Status:" + isInstalled);
-            if (!isInstalled)
+            Debug.Log("BuildReady Check HybridCLR Install Status:" + isInstalled + " PackageName:" + installerController.PackageVersion + " InstalledLibil2cppVersion:" + installerController.InstalledLibil2cppVersion);
+            if (!isInstalled || installerController.InstalledLibil2cppVersion != installerController.PackageVersion)
             {
                 Debug.Log("BuildReady Install HybridCLR");
                 installerController.InstallDefaultHybridCLR();
