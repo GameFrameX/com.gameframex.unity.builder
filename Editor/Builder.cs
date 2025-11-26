@@ -250,6 +250,7 @@ namespace GameFrameX.Builder.Editor
             BuildParameters buildParameters = new BuiltinBuildParameters();
             buildParameters.ClearBuildCacheFiles = !_builderOptions.IsIncrementalBuildPackage;
             buildParameters.BuildTarget = EditorUserBuildSettings.activeBuildTarget;
+            buildParameters.BuildBundleType = (int)EBuildBundleType.AssetBundle;
             buildParameters.PackageVersion = DateTime.Now.ToString("yyyyMMddHHmmss");
             buildParameters.VerifyBuildingResult = true;
             buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
