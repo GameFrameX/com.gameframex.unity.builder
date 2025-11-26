@@ -213,25 +213,43 @@ namespace GameFrameX.Builder.Editor
         /// </summary>
         public static void BuildReady()
         {
+            Debug.Log("BuildReady");
+
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
+            Debug.Log("BuildReady Start HybridCLR");
             var installerController = new InstallerController();
-            if (!installerController.HasInstalledHybridCLR())
+            var isInstalled = installerController.HasInstalledHybridCLR();
+            Debug.Log("BuildReady Check HybridCLR Install Status:" + isInstalled);
+            if (!isInstalled)
             {
+                Debug.Log("BuildReady Install HybridCLR");
                 installerController.InstallDefaultHybridCLR();
+                isInstalled = installerController.HasInstalledHybridCLR();
+                Debug.Log("BuildReady Check HybridCLR Install Status After Install:" + isInstalled);
             }
+
+            Debug.Log("BuildReady End HybridCLR");
 #endif
+            Debug.Log("BuildReady Start AssetDatabase Refresh");
             AssetDatabase.Refresh();
+            Debug.Log("BuildReady End AssetDatabase Refresh");
             // 复制热更新程序集
+            Debug.Log("BuildReady Start Copy Hotfix Code");
             BuildHotfixHelper.CopyHotfixCode();
             AssetDatabase.Refresh();
+            Debug.Log("BuildReady End Copy Hotfix Code");
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
             // 构建热更新代理
+            Debug.Log("BuildReady Start Generate All");
             PrebuildCommand.GenerateAll();
+            Debug.Log("BuildReady End Generate All");
 #endif
             AssetDatabase.Refresh();
             // 复制AOT代码
+            Debug.Log("BuildReady Start Copy AOT Code");
             BuildHotfixHelper.CopyAOTCode();
             AssetDatabase.Refresh();
+            Debug.Log("BuildReady End Copy AOT Code");
             if (_builderOptions.IsUploadLogFile)
             {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
