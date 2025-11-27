@@ -233,11 +233,6 @@ namespace GameFrameX.Builder.Editor
             Debug.Log("BuildReady Start AssetDatabase Refresh");
             AssetDatabase.Refresh();
             Debug.Log("BuildReady End AssetDatabase Refresh");
-            // 复制热更新程序集
-            Debug.Log("BuildReady Start Copy Hotfix Code");
-            BuildHotfixHelper.CopyHotfixCode();
-            AssetDatabase.Refresh();
-            Debug.Log("BuildReady End Copy Hotfix Code");
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
             // 构建热更新代理
             Debug.Log("BuildReady Start Generate All");
@@ -245,11 +240,6 @@ namespace GameFrameX.Builder.Editor
             Debug.Log("BuildReady End Generate All");
 #endif
             AssetDatabase.Refresh();
-            // 复制AOT代码
-            Debug.Log("BuildReady Start Copy AOT Code");
-            BuildHotfixHelper.CopyAOTCode();
-            AssetDatabase.Refresh();
-            Debug.Log("BuildReady End Copy AOT Code");
             if (_builderOptions.IsUploadLogFile)
             {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
@@ -263,10 +253,23 @@ namespace GameFrameX.Builder.Editor
         /// </summary>
         public static void BuildAsset()
         {
+            // 复制热更新程序集
+            Debug.Log("BuildReady Start Copy Hotfix Code");
+            BuildHotfixHelper.CopyHotfixCode();
+            AssetDatabase.Refresh();
+            Debug.Log("BuildReady End Copy Hotfix Code");
+
+            // 复制AOT代码
+            Debug.Log("BuildReady Start Copy AOT Code");
+            BuildHotfixHelper.CopyAOTCode();
+            AssetDatabase.Refresh();
+            Debug.Log("BuildReady End Copy AOT Code");
+
             Debug.Log("BuildAsset");
             var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline.ToString());
             BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
             BuildParameters buildParameters = new BuiltinBuildParameters();
+            buildParameters.UseAssetDependencyDB = true;
             buildParameters.ClearBuildCacheFiles = !_builderOptions.IsIncrementalBuildPackage;
             buildParameters.BuildTarget = EditorUserBuildSettings.activeBuildTarget;
             buildParameters.BuildBundleType = (int)EBuildBundleType.AssetBundle;
