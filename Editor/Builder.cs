@@ -266,6 +266,16 @@ namespace GameFrameX.Builder.Editor
             Debug.Log("BuildReady End Copy AOT Code");
 
             Debug.Log("BuildAsset");
+            {
+                // 修改资源包文件名的大小写不敏感为true
+                foreach (var assetBundleCollectorPackage in AssetBundleCollectorSettingData.Setting.Packages)
+                {
+                    assetBundleCollectorPackage.LocationToLower = true;
+                }
+
+                AssetBundleCollectorSettingData.SaveFile();
+            }
+
             var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline.ToString());
             BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
             BuildParameters buildParameters = new BuiltinBuildParameters();
