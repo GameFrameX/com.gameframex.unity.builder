@@ -1,3 +1,11 @@
+## [2.0.2](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.0.1...2.0.2) (2025-12-23)
+
+
+### Bug Fixes
+
+* **Editor:** 修复HybridCLR安装检查逻辑 ([b6a0432](https://github.com/gameframex/com.gameframex.unity.builder/commit/b6a0432a46b8c828cbddc13df1f9d7f7f48568d6))
+* **资源构建:** 修改资源包文件名大小写不敏感为true ([1026248](https://github.com/gameframex/com.gameframex.unity.builder/commit/1026248b78023386b29456ce046a16c8defe28f7))
+
 # Changelog
 
 ## [2.0.0](https://github.com/GameFrameX/com.gameframex.unity.builder/tree/2.0.0) (2025-10-25)
