@@ -1,5 +1,6 @@
 using System;
 using GameFrameX.Editor;
+using GameFrameX.Runtime;
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
 using GameFrameX.ObjectStorage.Editor;
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_TENCENT
