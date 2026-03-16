@@ -277,13 +277,11 @@ namespace GameFrameX.Builder.Editor
                 AssetBundleCollectorSettingData.SaveFile();
             }
 
-            var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline.ToString());
+            var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, EBuildPipeline.BuiltinBuildPipeline);
             BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
             BuildParameters buildParameters = new BuiltinBuildParameters();
-            buildParameters.UseAssetDependencyDB = true;
-            buildParameters.ClearBuildCacheFiles = !_builderOptions.IsIncrementalBuildPackage;
+            buildParameters.BuildMode = _builderOptions.IsIncrementalBuildPackage ? EBuildMode.IncrementalBuild : EBuildMode.ForceRebuild;
             buildParameters.BuildTarget = EditorUserBuildSettings.activeBuildTarget;
-            buildParameters.BuildBundleType = (int)EBuildBundleType.AssetBundle;
             buildParameters.PackageVersion = DateTime.Now.ToString("yyyyMMddHHmmss");
             buildParameters.VerifyBuildingResult = true;
             buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
