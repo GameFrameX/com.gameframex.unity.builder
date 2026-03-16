@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.0.2...2.0.3) (2026-03-16)
+
+
+### Bug Fixes
+
+*  CI build ([697497d](https://github.com/gameframex/com.gameframex.unity.builder/commit/697497dcb9ee27d03d3900d14f4be205535bec3f))
+
 ## [2.0.2](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.0.1...2.0.2) (2025-12-23)
 
 
