@@ -10,7 +10,7 @@ using GameFrameX.ObjectStorage.Tencent.Editor;
 using GameFrameX.ObjectStorage.QiNiu.Editor;
 #endif
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_A_LI_YUN
-using GameFrameX.ObjectStorage.ALiYun.Editor;
+using GameFrameX.ObjectStorage.ALiYun.Runtime;
 #endif
 #endif
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
