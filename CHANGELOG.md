@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.1.1...2.1.2) (2026-05-26)
+
+
+### Bug Fixes
+
+* **builder:** 设置 AppVersion 后持久化资产变更 ([b747874](https://github.com/gameframex/com.gameframex.unity.builder/commit/b747874786da7ecd5adb6115c657f3b161650b5b))
+
 ## [2.1.1](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.1.0...2.1.1) (2026-05-26)
 
 
