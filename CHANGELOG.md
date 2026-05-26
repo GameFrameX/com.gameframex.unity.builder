@@ -1,3 +1,18 @@
+# [2.1.0](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.0.3...2.1.0) (2026-05-26)
+
+
+### Bug Fixes
+
+* **builder:** 增加命令行参数越界保护和枚举值校验 ([271cd89](https://github.com/gameframex/com.gameframex.unity.builder/commit/271cd897ca7cbdc053077ae699100f01c7a40756))
+* **builder:** 统一默认值并重构微信通知 JSON 构造 ([3d59541](https://github.com/gameframex/com.gameframex.unity.builder/commit/3d59541fa62de8b6daf5b3765f679f8ed6e10448))
+
+
+### Features
+
+* **builder:** 支持通过参数指定内置文件拷贝选项 ([26e7696](https://github.com/gameframex/com.gameframex.unity.builder/commit/26e76966253c78bc6c2529c1edfa63cc67d11d88))
+* **builder:** 支持通过参数指定构建管线类型 ([44afc13](https://github.com/gameframex/com.gameframex.unity.builder/commit/44afc139d951296a4488d66f4443a32b397c8897))
+* **builder:** 支持通过参数指定资源包版本号 ([7892341](https://github.com/gameframex/com.gameframex.unity.builder/commit/78923415bb4acc832f1183f8f80f7f106fac7887))
+
 ## [2.0.3](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.0.2...2.0.3) (2026-03-16)
 
 
