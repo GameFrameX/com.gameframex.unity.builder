@@ -95,6 +95,11 @@ namespace GameFrameX.Builder.Editor
         public string UpdateAssetPackageVersionAuthorization { get; set; }
 
         /// <summary>
+        /// 构建管线类型(BuiltinBuildPipeline/ScriptableBuildPipeline/RawFileBuildPipeline)
+        /// </summary>
+        public string BuildPipeline { get; set; } = "BuiltinBuildPipeline";
+
+        /// <summary>
         /// 语言
         /// </summary>
         public string Language { get; set; } = "default";
