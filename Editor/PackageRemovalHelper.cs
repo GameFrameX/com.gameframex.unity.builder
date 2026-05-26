@@ -36,6 +36,11 @@ namespace GameFrameX.Builder.Editor
                 if (args[i] == RemovePackagesArg && i + 1 < args.Length)
                 {
                     var packages = args[i + 1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    for (var j = 0; j < packages.Length; j++)
+                    {
+                        packages[j] = packages[j].Trim();
+                    }
+
                     return new List<string>(packages);
                 }
             }
@@ -78,7 +83,10 @@ namespace GameFrameX.Builder.Editor
 
             if (removedCount > 0)
             {
-                File.WriteAllText(manifestPath, manifest.ToString());
+                var tmpPath = manifestPath + ".tmp";
+                File.WriteAllText(tmpPath, manifest.ToString());
+                File.Copy(tmpPath, manifestPath, true);
+                File.Delete(tmpPath);
                 Debug.Log($"[PackageRemoval] manifest.json 已更新，共移除 {removedCount} 个依赖");
             }
         }
@@ -86,13 +94,29 @@ namespace GameFrameX.Builder.Editor
         private static void RemovePackageDirectories(List<string> packagesToRemove)
         {
             var packagesRoot = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "Packages"));
+            var packagesRootPrefix = packagesRoot + Path.DirectorySeparatorChar;
 
             foreach (var packageName in packagesToRemove)
             {
-                var packageDir = Path.Combine(packagesRoot, packageName);
-                if (Directory.Exists(packageDir))
+                if (string.IsNullOrWhiteSpace(packageName) ||
+                    packageName.IndexOfAny(new[] { '/', '\\', ':' }) >= 0 ||
+                    packageName.Contains(".."))
                 {
-                    Directory.Delete(packageDir, true);
+                    Debug.LogWarning($"[PackageRemoval] 包名不合法，跳过: {packageName}");
+                    continue;
+                }
+
+                var packageDir = Path.Combine(packagesRoot, packageName);
+                var fullPath = Path.GetFullPath(packageDir);
+                if (!fullPath.StartsWith(packagesRootPrefix))
+                {
+                    Debug.LogWarning($"[PackageRemoval] 路径越界，跳过: {packageName}");
+                    continue;
+                }
+
+                if (Directory.Exists(fullPath))
+                {
+                    Directory.Delete(fullPath, true);
                     Debug.Log($"[PackageRemoval] 删除本地包目录: {packageName}");
                 }
                 else
