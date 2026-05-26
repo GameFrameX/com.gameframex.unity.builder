@@ -105,6 +105,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.BuildPipeline = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-PackageVersion")
+                {
+                    _builderOptions.PackageVersion = commandLineArgs[index + 1];
+                }
             }
 
             if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())

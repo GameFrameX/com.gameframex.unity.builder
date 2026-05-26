@@ -95,6 +95,11 @@ namespace GameFrameX.Builder.Editor
         public string UpdateAssetPackageVersionAuthorization { get; set; }
 
         /// <summary>
+        /// 资源包版本号。为空时自动使用时间戳
+        /// </summary>
+        public string PackageVersion { get; set; } = string.Empty;
+
+        /// <summary>
         /// 构建管线类型(BuiltinBuildPipeline/ScriptableBuildPipeline/RawFileBuildPipeline)
         /// </summary>
         public string BuildPipeline { get; set; } = "BuiltinBuildPipeline";

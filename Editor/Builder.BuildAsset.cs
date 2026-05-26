@@ -58,7 +58,9 @@ namespace GameFrameX.Builder.Editor
             }
             buildParameters.BuildMode = _builderOptions.IsIncrementalBuildPackage ? EBuildMode.IncrementalBuild : EBuildMode.ForceRebuild;
             buildParameters.BuildTarget = EditorUserBuildSettings.activeBuildTarget;
-            buildParameters.PackageVersion = DateTime.Now.ToString("yyyyMMddHHmmss");
+            buildParameters.PackageVersion = string.IsNullOrWhiteSpace(_builderOptions.PackageVersion)
+                ? DateTime.Now.ToString("yyyyMMddHHmmss")
+                : _builderOptions.PackageVersion;
             buildParameters.VerifyBuildingResult = true;
             buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
             buildParameters.FileNameStyle = EFileNameStyle.HashName;
