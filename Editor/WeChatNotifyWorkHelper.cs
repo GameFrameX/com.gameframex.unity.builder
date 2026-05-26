@@ -47,6 +47,7 @@ namespace GameFrameX.Builder.Editor
         {
             using (var httpClient = new HttpClient())
             {
+                httpClient.Timeout = TimeSpan.FromSeconds(30);
                 var url = $"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key={builderOptions.WeChatBotKey}";
 
                 var markdownContent = $"### 游戏资源版本更新\n> 时间：{DateTime.Now:yyyy-MM-dd HH:mm:ss}\n> 资源版本:{buildParameters.PackageVersion}\n> 游戏版本:{UnityEngine.Application.version}\n> 游戏包名:{UnityEngine.Application.identifier}\n> 资源包名:{buildParameters.PackageName}\n> 资源平台:{buildParameters.BuildTarget.ToString()}\n> 渠道:{builderOptions.ChannelName}\n> 资源语言:{builderOptions.Language}";

@@ -52,6 +52,7 @@ namespace GameFrameX.Builder.Editor
         {
             using (var httpClient = new HttpClient())
             {
+                httpClient.Timeout = TimeSpan.FromSeconds(30);
                 httpClient.DefaultRequestHeaders.Add("Authorization", builderOptions.UpdateAssetPackageVersionAuthorization);
                 var url = builderOptions.UpdateAssetPackageVersionUrl;
 
