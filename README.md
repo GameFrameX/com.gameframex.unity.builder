@@ -30,19 +30,42 @@ For detailed usage, refer to Unity/Automated Build section in the documentation.
 
 ### Installation
 
-Choose one of the following methods:
+Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
 
-1. Add the following to your project's `manifest.json` file:
-   ```json
-   {"com.gameframex.unity.builder": "https://github.com/GameFrameX/com.gameframex.unity.builder.git"}
-   ```
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ]
+}
+```
 
-2. Use `Git URL` in Unity's Package Manager:
+Then add the package to `dependencies`:
+
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.builder": "2.0.3"
+  }
+}
+```
+
+`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
+
+Alternatively, you can also install via:
+
+1. Use `Git URL` in Unity's Package Manager:
    ```
    https://github.com/GameFrameX/com.gameframex.unity.builder.git
    ```
 
-3. Download the repository and place it in your Unity project's `Packages` directory. It will be loaded automatically.
+2. Download the repository and place it in your Unity project's `Packages` directory. It will be loaded automatically.
 
 ## Documentation & Resources
 

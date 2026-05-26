@@ -30,19 +30,42 @@ Game Frame X Builder 是一个 Unity 自动化构建工具，为游戏项目提�
 
 ### 安装
 
-任选以下方式之一：
+编辑 Unity 项目的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
 
-1. 直接在 `manifest.json` 文件中添加以下内容：
-   ```json
-   {"com.gameframex.unity.builder": "https://github.com/GameFrameX/com.gameframex.unity.builder.git"}
-   ```
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ]
+}
+```
 
-2. 在 Unity 的 `Packages Manager` 中使用 `Git URL` 的方式添加库，地址为：
+然后在 `dependencies` 中添加包：
+
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.builder": "2.0.3"
+  }
+}
+```
+
+`scopes` 控制哪些包通过此注册表解析。只有以 `com.gameframex` 开头的包才会从这个注册表获取。
+
+你也可以通过以下方式安装：
+
+1. 在 Unity 的 `Package Manager` 中使用 `Git URL` 的方式添加库，地址为：
    ```
    https://github.com/GameFrameX/com.gameframex.unity.builder.git
    ```
 
-3. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
+2. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
 
 ## 文档与资源
 

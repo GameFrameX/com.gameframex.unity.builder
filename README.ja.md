@@ -30,19 +30,42 @@ Game Frame X Builder は Unity の自動ビルドツールで、ゲームプロ�
 
 ### インストール
 
-以下のいずれかの方法を選択してください：
+Unity プロジェクトの `Packages/manifest.json` を編集し、`scopedRegistries` セクションを追加してください：
 
-1. プロジェクトの `manifest.json` ファイルに以下を追加：
-   ```json
-   {"com.gameframex.unity.builder": "https://github.com/GameFrameX/com.gameframex.unity.builder.git"}
-   ```
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ]
+}
+```
 
-2. Unity の Package Manager で `Git URL` を使用：
+`dependencies` にパッケージを追加：
+
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.builder": "2.0.3"
+  }
+}
+```
+
+`scopes` は、どのパッケージをこのレジストリから解決するかを制御します。`com.gameframex` で始まるパッケージのみがこのレジストリから取得されます。
+
+以下の方法でもインストール可能です：
+
+1. Unity の Package Manager で `Git URL` を使用：
    ```
    https://github.com/GameFrameX/com.gameframex.unity.builder.git
    ```
 
-3. リポジトリをダウンロードして Unity プロジェクトの `Packages` ディレクトリに配置。自動的にロードされます。
+2. リポジトリをダウンロードして Unity プロジェクトの `Packages` ディレクトリに配置。自動的にロードされます。
 
 ## ドキュメントとリソース
 
