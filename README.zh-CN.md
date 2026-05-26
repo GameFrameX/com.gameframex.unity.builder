@@ -67,6 +67,59 @@ Game Frame X Builder 是一个 Unity 自动化构建工具，为游戏项目提�
 
 2. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
 
+## 命令行参数
+
+参数以 Unity 命令行参数形式传入（如 `-flag value`）。
+
+### 必填参数
+
+| 参数 | 说明 |
+|------|------|
+| `-executeMethod` | 执行方法（如 `GameFrameX.Builder.Editor.Builder.BuildApk`） |
+| `-BUILD_NUMBER` | 构建号 |
+
+### 通用参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `-logFile` | string | 自动生成 | 日志文件路径 |
+| `-JOB_NAME` | string | | 任务名称 |
+| `-BundleId` | string | 项目设置 | 应用包名 |
+| `-AppVersion` | string | 项目设置 | 应用版本号 |
+| `-ChannelName` | string | `default` | 渠道名称 |
+| `-Language` | string | `default` | 语言 |
+
+### 资源构建参数（BuildAsset）
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `-PackageName` | string | `DefaultPackage` | 资源包名称 |
+| `-PackageVersion` | string | 时间戳 | 资源包版本号（为空时自动使用时间戳） |
+| `-BuildPipeline` | enum | `BuiltinBuildPipeline` | 构建管线类型：`BuiltinBuildPipeline` / `ScriptableBuildPipeline` / `RawFileBuildPipeline` |
+| `-BuildinFileCopyOption` | enum | `ClearAndCopyAll` | 内置文件拷贝选项：`None` / `ClearAndCopyAll` / `ClearAndCopyByTags` / `OnlyCopyNew` |
+| `-IsIncrementalBuildPackage` | flag | `false` | 是否使用增量构建 |
+
+### 上传与通知参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `-IsUploadLogFile` | flag | `false` | 是否上传日志文件 |
+| `-IsUploadAsset` | flag | `false` | 是否上传资源包 |
+| `-IsUploadApk` | flag | `false` | 是否上传 APK/IPA（仅 BuildApk 有效） |
+| `-IsUpdateAssetPackageVersion` | flag | `false` | 是否更新资源包版本 |
+| `-UpdateAssetPackageVersionUrl` | string | | 更新资源包版本的 URL |
+| `-UpdateAssetPackageVersionAuthorization` | string | | 更新资源包版本的授权 |
+| `-WeChatBotKey` | string | | 企业微信机器人 Webhook Key |
+
+### 对象存储参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `-ObjectStorageKey` | string | | 对象存储访问 Key |
+| `-ObjectStorageSecret` | string | | 对象存储访问秘钥 |
+| `-ObjectStorageBucketName` | string | | 对象存储桶名称 |
+| `-ObjectStorageEndPoint` | string | | 对象存储区域节点 |
+
 ## 文档与资源
 
 - 文档地址: https://gameframex.doc.alianblank.com

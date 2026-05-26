@@ -67,6 +67,59 @@ Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries
 
 2. 저장소를 다운로드하여 Unity 프로젝트의 `Packages` 디렉토리에 배치하면 자동으로 로드됩니다.
 
+## 명령줄 매개변수
+
+매개변수는 Unity 명령줄 인수로 전달됩니다 (예: `-flag value`).
+
+### 필수
+
+| 매개변수 | 설명 |
+|---------|------|
+| `-executeMethod` | 실행할 메서드 (예: `GameFrameX.Builder.Editor.Builder.BuildApk`) |
+| `-BUILD_NUMBER` | 빌드 번호 |
+
+### 일반
+
+| 매개변수 | 유형 | 기본값 | 설명 |
+|---------|------|-------|------|
+| `-logFile` | string | 자동 생성 | 로그 파일 경로 |
+| `-JOB_NAME` | string | | 작업 이름 |
+| `-BundleId` | string | 프로젝트 설정 | 애플리케이션 번들 ID |
+| `-AppVersion` | string | 프로젝트 설정 | 애플리케이션 버전 |
+| `-ChannelName` | string | `default` | 채널 이름 |
+| `-Language` | string | `default` | 언어 |
+
+### 에셋 빌드 (BuildAsset)
+
+| 매개변수 | 유형 | 기본값 | 설명 |
+|---------|------|-------|------|
+| `-PackageName` | string | `DefaultPackage` | 에셋 번들 패키지 이름 |
+| `-PackageVersion` | string | 타임스탬프 | 패키지 버전 (비어 있으면 타임스탬프 자동 생성) |
+| `-BuildPipeline` | enum | `BuiltinBuildPipeline` | 빌드 파이프라인: `BuiltinBuildPipeline` / `ScriptableBuildPipeline` / `RawFileBuildPipeline` |
+| `-BuildinFileCopyOption` | enum | `ClearAndCopyAll` | 내장 파일 복사 옵션: `None` / `ClearAndCopyAll` / `ClearAndCopyByTags` / `OnlyCopyNew` |
+| `-IsIncrementalBuildPackage` | flag | `false` | 증분 빌드 사용 |
+
+### 업로드 및 알림
+
+| 매개변수 | 유형 | 기본값 | 설명 |
+|---------|------|-------|------|
+| `-IsUploadLogFile` | flag | `false` | 로그 파일 업로드 |
+| `-IsUploadAsset` | flag | `false` | 에셋 번들 업로드 |
+| `-IsUploadApk` | flag | `false` | APK/IPA 업로드 (BuildApk만 해당) |
+| `-IsUpdateAssetPackageVersion` | flag | `false` | 에셋 패키지 버전 업데이트 |
+| `-UpdateAssetPackageVersionUrl` | string | | 버전 업데이트 URL |
+| `-UpdateAssetPackageVersionAuthorization` | string | | 버전 업데이트 인증 정보 |
+| `-WeChatBotKey` | string | | WeChat Work 봇 Webhook Key |
+
+### 오브젝트 스토리지
+
+| 매개변수 | 유형 | 기본값 | 설명 |
+|---------|------|-------|------|
+| `-ObjectStorageKey` | string | | 액세스 키 |
+| `-ObjectStorageSecret` | string | | 시크릿 키 |
+| `-ObjectStorageBucketName` | string | | 버킷 이름 |
+| `-ObjectStorageEndPoint` | string | | 엔드포인트 URL |
+
 ## 문서 및 자료
 
 - 문서: https://gameframex.doc.alianblank.com

@@ -67,6 +67,59 @@ Game Frame X Builder 是一個 Unity 自動化構建工具，為遊戲專案提�
 
 2. 直接下載倉庫放置到 Unity 專案的 `Packages` 目錄下，會自動載入識別。
 
+## 命令列參數
+
+參數以 Unity 命令列參數形式傳入（如 `-flag value`）。
+
+### 必填參數
+
+| 參數 | 說明 |
+|------|------|
+| `-executeMethod` | 執行方法（如 `GameFrameX.Builder.Editor.Builder.BuildApk`） |
+| `-BUILD_NUMBER` | 建置號 |
+
+### 通用參數
+
+| 參數 | 類型 | 預設值 | 說明 |
+|------|------|--------|------|
+| `-logFile` | string | 自動產生 | 日誌檔案路徑 |
+| `-JOB_NAME` | string | | 任務名稱 |
+| `-BundleId` | string | 專案設定 | 應用程式包名 |
+| `-AppVersion` | string | 專案設定 | 應用程式版本號 |
+| `-ChannelName` | string | `default` | 渠道名稱 |
+| `-Language` | string | `default` | 語言 |
+
+### 資源建置參數（BuildAsset）
+
+| 參數 | 類型 | 預設值 | 說明 |
+|------|------|--------|------|
+| `-PackageName` | string | `DefaultPackage` | 資源包名稱 |
+| `-PackageVersion` | string | 時間戳 | 資源包版本號（為空時自動使用時間戳） |
+| `-BuildPipeline` | enum | `BuiltinBuildPipeline` | 建置管線類型：`BuiltinBuildPipeline` / `ScriptableBuildPipeline` / `RawFileBuildPipeline` |
+| `-BuildinFileCopyOption` | enum | `ClearAndCopyAll` | 內建檔案複製選項：`None` / `ClearAndCopyAll` / `ClearAndCopyByTags` / `OnlyCopyNew` |
+| `-IsIncrementalBuildPackage` | flag | `false` | 是否使用增量建置 |
+
+### 上傳與通知參數
+
+| 參數 | 類型 | 預設值 | 說明 |
+|------|------|--------|------|
+| `-IsUploadLogFile` | flag | `false` | 是否上傳日誌檔案 |
+| `-IsUploadAsset` | flag | `false` | 是否上傳資源包 |
+| `-IsUploadApk` | flag | `false` | 是否上傳 APK/IPA（僅 BuildApk 有效） |
+| `-IsUpdateAssetPackageVersion` | flag | `false` | 是否更新資源包版本 |
+| `-UpdateAssetPackageVersionUrl` | string | | 更新資源包版本的 URL |
+| `-UpdateAssetPackageVersionAuthorization` | string | | 更新資源包版本的授權 |
+| `-WeChatBotKey` | string | | 企業微信機器人 Webhook Key |
+
+### 物件儲存參數
+
+| 參數 | 類型 | 預設值 | 說明 |
+|------|------|--------|------|
+| `-ObjectStorageKey` | string | | 物件儲存存取 Key |
+| `-ObjectStorageSecret` | string | | 物件儲存存取金鑰 |
+| `-ObjectStorageBucketName` | string | | 物件儲存桶名稱 |
+| `-ObjectStorageEndPoint` | string | | 物件儲存區域端點 |
+
 ## 文檔與資源
 
 - 文檔地址: https://gameframex.doc.alianblank.com
