@@ -15,16 +15,16 @@ namespace GameFrameX.Builder.Editor
         public static void BuildAsset()
         {
             // 复制热更新程序集
-            Debug.Log("BuildReady Start Copy Hotfix Code");
+            Debug.Log("BuildAsset Start Copy Hotfix Code");
             BuildHotfixHelper.CopyHotfixCode();
             AssetDatabase.Refresh();
-            Debug.Log("BuildReady End Copy Hotfix Code");
+            Debug.Log("BuildAsset End Copy Hotfix Code");
 
             // 复制AOT代码
-            Debug.Log("BuildReady Start Copy AOT Code");
+            Debug.Log("BuildAsset Start Copy AOT Code");
             BuildHotfixHelper.CopyAOTCode();
             AssetDatabase.Refresh();
-            Debug.Log("BuildReady End Copy AOT Code");
+            Debug.Log("BuildAsset End Copy AOT Code");
 
             Debug.Log("BuildAsset");
             {
@@ -37,7 +37,13 @@ namespace GameFrameX.Builder.Editor
                 AssetBundleCollectorSettingData.SaveFile();
             }
 
-            var buildPipeline = (EBuildPipeline)Enum.Parse(typeof(EBuildPipeline), _builderOptions.BuildPipeline, true);
+            if (!Enum.TryParse(typeof(EBuildPipeline), _builderOptions.BuildPipeline, true, out var buildPipelineObj))
+            {
+                Debug.LogError($"无效的构建管线类型: {_builderOptions.BuildPipeline}，可选值: {string.Join(", ", Enum.GetNames(typeof(EBuildPipeline)))}");
+                return;
+            }
+
+            var buildPipeline = (EBuildPipeline)buildPipelineObj;
             var buildInFileCopyParams = AssetBundleBuilderSetting.GetPackageBuildinFileCopyParams(_builderOptions.PackageName, buildPipeline);
             IBuildPipeline pipeline;
             BuildParameters buildParameters;
@@ -62,9 +68,22 @@ namespace GameFrameX.Builder.Editor
                 ? DateTime.Now.ToString("yyyyMMddHHmmss")
                 : _builderOptions.PackageVersion;
             buildParameters.VerifyBuildingResult = true;
-            buildParameters.BuildinFileCopyOption = string.IsNullOrWhiteSpace(_builderOptions.BuildinFileCopyOption)
-                ? EBuildinFileCopyOption.ClearAndCopyAll
-                : (EBuildinFileCopyOption)Enum.Parse(typeof(EBuildinFileCopyOption), _builderOptions.BuildinFileCopyOption, true);
+            EBuildinFileCopyOption buildinFileCopyOption;
+            if (string.IsNullOrWhiteSpace(_builderOptions.BuildinFileCopyOption))
+            {
+                buildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
+            }
+            else if (!Enum.TryParse(typeof(EBuildinFileCopyOption), _builderOptions.BuildinFileCopyOption, true, out var optionObj))
+            {
+                Debug.LogError($"无效的内置文件拷贝选项: {_builderOptions.BuildinFileCopyOption}，可选值: {string.Join(", ", Enum.GetNames(typeof(EBuildinFileCopyOption)))}");
+                return;
+            }
+            else
+            {
+                buildinFileCopyOption = (EBuildinFileCopyOption)optionObj;
+            }
+
+            buildParameters.BuildinFileCopyOption = buildinFileCopyOption;
             buildParameters.FileNameStyle = EFileNameStyle.HashName;
             buildParameters.BuildOutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
             buildParameters.BuildinFileRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();

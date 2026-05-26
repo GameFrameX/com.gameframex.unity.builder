@@ -19,43 +19,73 @@ namespace GameFrameX.Builder.Editor
                 var commandLineArg = commandLineArgs[index];
                 if (commandLineArg == "-logFile")
                 {
-                    _builderOptions.LogFilePath = commandLineArgs[index + 1].Replace("/Unity/", "/");
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.LogFilePath = commandLineArgs[index + 1].Replace("/Unity/", "/");
+                    }
                 }
                 else if (commandLineArg == "-executeMethod")
                 {
-                    _builderOptions.ExecuteMethod = commandLineArgs[index + 1].Trim();
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.ExecuteMethod = commandLineArgs[index + 1].Trim();
+                    }
                 }
                 else if (commandLineArg == "-BUILD_NUMBER")
                 {
-                    _builderOptions.BuildNumber = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.BuildNumber = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-JOB_NAME")
                 {
-                    _builderOptions.JobName = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.JobName = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-ObjectStorageKey")
                 {
-                    _builderOptions.ObjectStorageKey = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.ObjectStorageKey = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-ObjectStorageSecret")
                 {
-                    _builderOptions.ObjectStorageSecret = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.ObjectStorageSecret = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-ObjectStorageBucketName")
                 {
-                    _builderOptions.ObjectStorageBucketName = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.ObjectStorageBucketName = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-ObjectStorageEndPoint")
                 {
-                    _builderOptions.ObjectStorageEndPoint = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.ObjectStorageEndPoint = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-PackageName")
                 {
-                    _builderOptions.PackageName = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.PackageName = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-ChannelName")
                 {
-                    _builderOptions.ChannelName = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.ChannelName = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-IsIncrementalBuildPackage")
                 {
@@ -79,39 +109,66 @@ namespace GameFrameX.Builder.Editor
                 }
                 else if (commandLineArg == "-UpdateAssetPackageVersionUrl")
                 {
-                    _builderOptions.UpdateAssetPackageVersionUrl = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.UpdateAssetPackageVersionUrl = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-UpdateAssetPackageVersionAuthorization")
                 {
-                    _builderOptions.UpdateAssetPackageVersionAuthorization = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.UpdateAssetPackageVersionAuthorization = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-Language")
                 {
-                    _builderOptions.Language = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.Language = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-WeChatBotKey")
                 {
-                    _builderOptions.WeChatBotKey = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.WeChatBotKey = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-BundleId")
                 {
-                    _builderOptions.BundleId = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.BundleId = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-AppVersion")
                 {
-                    _builderOptions.AppVersion = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.AppVersion = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-BuildPipeline")
                 {
-                    _builderOptions.BuildPipeline = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.BuildPipeline = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-PackageVersion")
                 {
-                    _builderOptions.PackageVersion = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.PackageVersion = commandLineArgs[index + 1];
+                    }
                 }
                 else if (commandLineArg == "-BuildinFileCopyOption")
                 {
-                    _builderOptions.BuildinFileCopyOption = commandLineArgs[index + 1];
+                    if (index + 1 < commandLineArgs.Length)
+                    {
+                        _builderOptions.BuildinFileCopyOption = commandLineArgs[index + 1];
+                    }
                 }
             }
 
