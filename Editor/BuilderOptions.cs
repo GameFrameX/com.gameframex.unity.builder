@@ -105,6 +105,11 @@ namespace GameFrameX.Builder.Editor
         public string BuildPipeline { get; set; } = "BuiltinBuildPipeline";
 
         /// <summary>
+        /// 内置文件拷贝选项(None/ClearAndCopyAll/ClearAndCopyByTags/OnlyCopyNew)。为空时默认 ClearAndCopyAll
+        /// </summary>
+        public string BuildinFileCopyOption { get; set; } = string.Empty;
+
+        /// <summary>
         /// 语言
         /// </summary>
         public string Language { get; set; } = "default";

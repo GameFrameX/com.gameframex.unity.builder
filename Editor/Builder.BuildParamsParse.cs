@@ -109,6 +109,10 @@ namespace GameFrameX.Builder.Editor
                 {
                     _builderOptions.PackageVersion = commandLineArgs[index + 1];
                 }
+                else if (commandLineArg == "-BuildinFileCopyOption")
+                {
+                    _builderOptions.BuildinFileCopyOption = commandLineArgs[index + 1];
+                }
             }
 
             if (_builderOptions.ExecuteMethod.IsNullOrWhiteSpace())

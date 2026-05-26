@@ -62,7 +62,9 @@ namespace GameFrameX.Builder.Editor
                 ? DateTime.Now.ToString("yyyyMMddHHmmss")
                 : _builderOptions.PackageVersion;
             buildParameters.VerifyBuildingResult = true;
-            buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
+            buildParameters.BuildinFileCopyOption = string.IsNullOrWhiteSpace(_builderOptions.BuildinFileCopyOption)
+                ? EBuildinFileCopyOption.ClearAndCopyAll
+                : (EBuildinFileCopyOption)Enum.Parse(typeof(EBuildinFileCopyOption), _builderOptions.BuildinFileCopyOption, true);
             buildParameters.FileNameStyle = EFileNameStyle.HashName;
             buildParameters.BuildOutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
             buildParameters.BuildinFileRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
