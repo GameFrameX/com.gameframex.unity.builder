@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.1.0...2.1.1) (2026-05-26)
+
+
+### Bug Fixes
+
+* **builder:** 补充 WeChatNotifyWorkHelper 缺失的 Newtonsoft.Json 引用 ([f57d650](https://github.com/gameframex/com.gameframex.unity.builder/commit/f57d650fd70e8fc27dfac5f5ddcc444accb5a783))
+
 # [2.1.0](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.0.3...2.1.0) (2026-05-26)
 
 
