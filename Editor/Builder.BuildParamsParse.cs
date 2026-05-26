@@ -200,6 +200,8 @@ namespace GameFrameX.Builder.Editor
             {
                 PlayerSettings.bundleVersion = _builderOptions.AppVersion.Trim();
             }
+
+            AssetDatabase.SaveAssets();
         }
     }
 }
