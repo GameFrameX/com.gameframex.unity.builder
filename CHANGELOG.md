@@ -1,3 +1,16 @@
+# [2.2.0](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.1.2...2.2.0) (2026-05-26)
+
+
+### Bug Fixes
+
+* **builder:** 修复 PackageRemovalHelper 路径遍历和原子写入 ([54bf5df](https://github.com/gameframex/com.gameframex.unity.builder/commit/54bf5df6310760d4a1f3c21f56597317508c6234))
+* **builder:** 设置 HttpClient 超时时间 ([f4fbbe5](https://github.com/gameframex/com.gameframex.unity.builder/commit/f4fbbe5cdf4229d41b1cf193fabb77df89354598))
+
+
+### Features
+
+* **builder:** 添加通用包移除工具 PackageRemovalHelper ([b51da26](https://github.com/gameframex/com.gameframex.unity.builder/commit/b51da26a57655b80627579f2fe70f43958e30101))
+
 ## [2.1.2](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.1.1...2.1.2) (2026-05-26)
 
 
