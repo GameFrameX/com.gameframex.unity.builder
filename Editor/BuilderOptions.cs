@@ -87,12 +87,12 @@ namespace GameFrameX.Builder.Editor
         /// <summary>
         /// 更新资源包版本的url
         /// </summary>
-        public string UpdateAssetPackageVersionUrl { get; set; }
+        public string UpdateAssetPackageVersionUrl { get; set; } = string.Empty;
 
         /// <summary>
         /// 更新资源包版本的授权
         /// </summary>
-        public string UpdateAssetPackageVersionAuthorization { get; set; }
+        public string UpdateAssetPackageVersionAuthorization { get; set; } = string.Empty;
 
         /// <summary>
         /// 资源包版本号。为空时自动使用时间戳
@@ -117,7 +117,7 @@ namespace GameFrameX.Builder.Editor
         /// <summary>
         /// 微信机器人key
         /// </summary>
-        public string WeChatBotKey { get; set; }
+        public string WeChatBotKey { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否上传APK,只有调用BuildApk 的时候有效
