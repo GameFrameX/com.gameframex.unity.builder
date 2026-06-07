@@ -131,6 +131,21 @@ Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries
 - 저장소: https://github.com/GameFrameX/com.gameframex.unity.builder
 - 이슈: https://github.com/GameFrameX/com.gameframex.unity.builder/issues
 
+
+## 의존성
+
+| 패키지 | 설명 |
+|--------|------|
+| (无) | - |
+
+
+## 커뮤니티 및 지원
+
+- QQ 그룹: 467608841 / 233840761
+
+## 변경 로그
+
+[Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.builder/releases)에서 변경 로그를 확인하세요.
 ## 라이선스
 
 자세한 내용은 [LICENSE](LICENSE.md)를 참조하세요.

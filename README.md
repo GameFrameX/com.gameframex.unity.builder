@@ -131,6 +131,21 @@ Parameters are passed as Unity command line arguments (e.g. `-flag value`).
 - Repository: https://github.com/GameFrameX/com.gameframex.unity.builder
 - Issues: https://github.com/GameFrameX/com.gameframex.unity.builder/issues
 
+
+## Dependencies
+
+| Package | Description |
+|---------|-------------|
+| (无) | - |
+
+
+## Community & Support
+
+- QQ Group: 467608841 / 233840761
+
+## Changelog
+
+See [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.builder/releases) for changelog.
 ## License
 
 See [LICENSE](LICENSE.md) for details.

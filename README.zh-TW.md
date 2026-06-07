@@ -131,6 +131,21 @@ Game Frame X Builder 是一個 Unity 自動化構建工具，為遊戲專案提�
 - 倉庫地址: https://github.com/GameFrameX/com.gameframex.unity.builder
 - 問題回報: https://github.com/GameFrameX/com.gameframex.unity.builder/issues
 
+
+## 依賴
+
+| 套件 | 說明 |
+|------|------|
+| (无) | - |
+
+
+## 社區與支援
+
+- QQ群: 467608841 / 233840761
+
+## 更新日誌
+
+查看 [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.builder/releases) 了解更新日誌。
 ## 開源協議
 
 詳細資訊請查看 [LICENSE](LICENSE.md) 檔案。
