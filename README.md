@@ -35,43 +35,36 @@ For detailed usage, refer to Unity/Automated Build section in the documentation.
 
 ### Installation
 
-Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
+Choose one of the following methods:
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "GameFrameX",
-      "url": "https://gameframex.upm.alianblank.uk",
-      "scopes": [
-        "com.gameframex"
-      ]
-    }
-  ]
-}
-```
-
-Then add the package to `dependencies`:
-
-```json
-{
-  "dependencies": {
-    "com.gameframex.unity.builder": "2.0.3"
-  }
-}
-```
-
-`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
-
-Alternatively, you can also install via:
-
-1. Use `Git URL` in Unity's Package Manager:
-   ```
-   https://github.com/GameFrameX/com.gameframex.unity.builder.git
+1. Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
+   ```json
+   {
+     "scopedRegistries": [
+       {
+         "name": "GameFrameX",
+         "url": "https://gameframex.upm.alianblank.uk",
+         "scopes": [
+           "com.gameframex"
+         ]
+       }
+     ],
+     "dependencies": {
+       "com.gameframex.unity.builder": "2.2.0"
+     }
+   }
    ```
 
-2. Download the repository and place it in your Unity project's `Packages` directory. It will be loaded automatically.
+   `scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
 
+2. Add to `manifest.json` dependencies:
+   ```json
+   {
+      "com.gameframex.unity.builder": "https://github.com/gameframex/com.gameframex.unity.builder.git"
+   }
+   ```
+3. Use **Package Manager** in Unity with **Git URL**: `https://github.com/gameframex/com.gameframex.unity.builder.git`
+4. Clone the repository into your Unity project's `Packages` directory. It will be loaded automatically.
 ## Command Line Parameters
 
 Parameters are passed as Unity command line arguments (e.g. `-flag value`).

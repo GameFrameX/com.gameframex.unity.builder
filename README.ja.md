@@ -35,43 +35,36 @@ Game Frame X Builder は Unity の自動ビルドツールで、ゲームプロ�
 
 ### インストール
 
-Unity プロジェクトの `Packages/manifest.json` を編集し、`scopedRegistries` セクションを追加してください：
+以下のいずれかの方法を選択してください：
 
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "GameFrameX",
-      "url": "https://gameframex.upm.alianblank.uk",
-      "scopes": [
-        "com.gameframex"
-      ]
-    }
-  ]
-}
-```
-
-`dependencies` にパッケージを追加：
-
-```json
-{
-  "dependencies": {
-    "com.gameframex.unity.builder": "2.0.3"
-  }
-}
-```
-
-`scopes` は、どのパッケージをこのレジストリから解決するかを制御します。`com.gameframex` で始まるパッケージのみがこのレジストリから取得されます。
-
-以下の方法でもインストール可能です：
-
-1. Unity の Package Manager で `Git URL` を使用：
-   ```
-   https://github.com/GameFrameX/com.gameframex.unity.builder.git
+1. Unity プロジェクトの `Packages/manifest.json` を編集し、`scopedRegistries` セクションを追加してください：
+   ```json
+   {
+     "scopedRegistries": [
+       {
+         "name": "GameFrameX",
+         "url": "https://gameframex.upm.alianblank.uk",
+         "scopes": [
+           "com.gameframex"
+         ]
+       }
+     ],
+     "dependencies": {
+       "com.gameframex.unity.builder": "2.2.0"
+     }
+   }
    ```
 
-2. リポジトリをダウンロードして Unity プロジェクトの `Packages` ディレクトリに配置。自動的にロードされます。
+   `scopes` は、どのパッケージをこのレジストリから解決するかを制御します。`com.gameframex` で始まるパッケージのみがこのレジストリから取得されます。
 
+2. `manifest.json` の `dependencies` に直接追加：
+   ```json
+   {
+      "com.gameframex.unity.builder": "https://github.com/gameframex/com.gameframex.unity.builder.git"
+   }
+   ```
+3. Unity の **Package Manager** で **Git URL** を使用して追加：`https://github.com/gameframex/com.gameframex.unity.builder.git`
+4. リポジトリを Unity プロジェクトの `Packages` ディレクトリにクローンしてください。自動的に読み込まれます。
 ## コマンドラインパラメータ
 
 パラメータは Unity コマンドライン引数として渡します（例: `-flag value`）。
