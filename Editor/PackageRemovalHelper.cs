@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -58,8 +57,8 @@ namespace GameFrameX.Builder.Editor
             }
 
             var json = File.ReadAllText(manifestPath);
-            var manifest = JObject.Parse(json);
-            var dependencies = manifest["dependencies"] as JObject;
+            var manifest = LitJSON.Runtime.JsonMapper.ToObject(json);
+            var dependencies = manifest["dependencies"];
             if (dependencies == null)
             {
                 Debug.LogWarning("[PackageRemoval] manifest.json 中未找到 dependencies 节点");

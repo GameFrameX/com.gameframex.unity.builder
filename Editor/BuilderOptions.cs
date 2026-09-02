@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-
 namespace GameFrameX.Builder.Editor
 {
     internal sealed class BuilderOptions
@@ -126,7 +124,7 @@ namespace GameFrameX.Builder.Editor
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return LitJSON.Runtime.JsonMapper.ToJson(this, true);
         }
     }
 }

@@ -32,7 +32,6 @@
 using System;
 using System.Net.Http;
 using System.Text;
-using Newtonsoft.Json;
 using UnityEngine;
 using YooAsset.Editor;
 
@@ -67,7 +66,7 @@ namespace GameFrameX.Builder.Editor
                     Channel = builderOptions.ChannelName,
                 };
 
-                var stringContent = new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
+                var stringContent = new StringContent(LitJSON.Runtime.JsonMapper.ToJson(content), Encoding.UTF8, "application/json");
                 try
                 {
                     // 使用同步方式发送HTTP请求

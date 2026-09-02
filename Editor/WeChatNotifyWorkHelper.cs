@@ -32,7 +32,6 @@
 using System;
 using System.Net.Http;
 using System.Text;
-using Newtonsoft.Json;
 using UnityEngine;
 using YooAsset.Editor;
 
@@ -56,7 +55,7 @@ namespace GameFrameX.Builder.Editor
                     msgtype = "markdown",
                     markdown = new { content = markdownContent }
                 };
-                var stringContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+                var stringContent = new StringContent(LitJSON.Runtime.JsonMapper.ToJson(payload), Encoding.UTF8, "application/json");
                 try
                 {
                     // 使用同步方式发送HTTP请求
