@@ -16,13 +16,17 @@ namespace GameFrameX.Builder.Editor
         {
             // 复制热更新程序集
             Debug.Log("BuildAsset Start Copy Hotfix Code");
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR && !DISABLE_HYBRIDCLR
             BuildHotfixHelper.CopyHotfixCode();
+#endif
             AssetDatabase.Refresh();
             Debug.Log("BuildAsset End Copy Hotfix Code");
 
             // 复制AOT代码
             Debug.Log("BuildAsset Start Copy AOT Code");
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR && !DISABLE_HYBRIDCLR
             BuildHotfixHelper.CopyAOTCode();
+#endif
             AssetDatabase.Refresh();
             Debug.Log("BuildAsset End Copy AOT Code");
 
