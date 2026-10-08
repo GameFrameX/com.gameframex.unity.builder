@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.2.1...2.2.2) (2026-10-08)
+
+
+### Bug Fixes
+
+* **builder:** HybridCLR 调用增加条件编译守卫 ([fac02ba](https://github.com/gameframex/com.gameframex.unity.builder/commit/fac02ba8e3c3e4c04f8e43ae5b9c1a51f57ed868))
+
 ## [2.2.1](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.2.0...2.2.1) (2026-06-07)
 
 
