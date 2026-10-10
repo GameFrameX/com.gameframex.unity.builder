@@ -1,7 +1,3 @@
-#if ENABLE_GAME_FRAME_X_HYBRID_CLR
-using HybridCLR.Editor.Commands;
-using HybridCLR.Editor.Installer;
-#endif
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +14,7 @@ namespace GameFrameX.Builder.Editor
 
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
             Debug.Log("BuildReady Start HybridCLR");
-            var installerController = new InstallerController();
+            var installerController = new HybridCLR.Installer.InstallerController();
             var isInstalled = installerController.HasInstalledHybridCLR();
             Debug.Log("BuildReady Check HybridCLR Install Status:" + isInstalled + " PackageName:" + installerController.PackageVersion + " InstalledLibil2cppVersion:" + installerController.InstalledLibil2cppVersion);
             if (!isInstalled || installerController.InstalledLibil2cppVersion != installerController.PackageVersion)
@@ -37,7 +33,7 @@ namespace GameFrameX.Builder.Editor
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
             // 构建热更新代理
             Debug.Log("BuildReady Start Generate All");
-            PrebuildCommand.GenerateAll();
+            HybridCLR.Commands.PrebuildCommand.GenerateAll();
             Debug.Log("BuildReady End Generate All");
 #endif
             AssetDatabase.Refresh();
