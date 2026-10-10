@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.2.2...2.2.3) (2026-10-10)
+
+
+### Bug Fixes
+
+* **builder:** HybridCLR 引用改为完全限定名 ([4654df5](https://github.com/gameframex/com.gameframex.unity.builder/commit/4654df50aa292b0d2cc113d43d290fcd9c27dd99))
+
 ## [2.2.2](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.2.1...2.2.2) (2026-10-08)
 
 
