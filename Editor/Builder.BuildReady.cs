@@ -1,3 +1,6 @@
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
+using GameFrameX.ObjectStorage.Runtime;
+#endif
 using UnityEditor;
 using UnityEngine;
 
@@ -40,7 +43,7 @@ namespace GameFrameX.Builder.Editor
             if (_builderOptions.IsUploadLogFile)
             {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+                ObjectStorageManager.UploadFile(new ObjectStorageUploadOptions { LocalPath = _builderOptions.LogFilePath });
 #endif
             }
         }

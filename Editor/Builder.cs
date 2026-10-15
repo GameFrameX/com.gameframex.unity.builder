@@ -2,12 +2,12 @@ using System;
 using GameFrameX.Editor;
 using GameFrameX.Runtime;
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-using GameFrameX.ObjectStorage.Editor;
+using GameFrameX.ObjectStorage.Runtime;
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_TENCENT
-using GameFrameX.ObjectStorage.Tencent.Editor;
+using GameFrameX.ObjectStorage.Tencent.Runtime;
 #endif
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_QI_NIU
-using GameFrameX.ObjectStorage.QiNiu.Editor;
+using GameFrameX.ObjectStorage.QiNiu.Runtime;
 #endif
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_A_LI_YUN
 using GameFrameX.ObjectStorage.ALiYun.Runtime;
@@ -25,7 +25,7 @@ namespace GameFrameX.Builder.Editor
     public static partial class Builder
     {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-        private static readonly IObjectStorageUploadManager ObjectStorageUploadManager;
+        private static readonly IObjectStorageManager ObjectStorageManager;
 #endif
         private static BuilderOptions _builderOptions;
 
@@ -33,18 +33,26 @@ namespace GameFrameX.Builder.Editor
         {
             BuildParamsParse();
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
+            ObjectStorageOptions objectStorageOptions = new ObjectStorageOptions
+            {
+                AccessKey = _builderOptions.ObjectStorageKey,
+                SecretKey = _builderOptions.ObjectStorageSecret,
+                BucketName = _builderOptions.ObjectStorageBucketName,
+                Endpoint = _builderOptions.ObjectStorageEndPoint,
+                SavePath = $"builder/{PlayerSettings.productName}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{_builderOptions.JobName}/{Application.version}/{_builderOptions.BuildNumber}"
+            };
+
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_QI_NIU
-            ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<QiNiuYunObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName, _builderOptions.ObjectStorageEndPoint);
+            ObjectStorageManager = ObjectStorageManagerFactory.Create<QiNiuYunObjectStorageManager>(objectStorageOptions);
 #endif
 
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_TENCENT
-            ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<TencentCloudObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName, _builderOptions.ObjectStorageEndPoint);
+            ObjectStorageManager = ObjectStorageManagerFactory.Create<TencentCloudObjectStorageManager>(objectStorageOptions);
 #endif
 
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE_A_LI_YUN
-            ObjectStorageUploadManager = ObjectStorageUploadFactory.Create<ALiYunObjectStorageUploadManager>(_builderOptions.ObjectStorageKey, _builderOptions.ObjectStorageSecret, _builderOptions.ObjectStorageBucketName, _builderOptions.ObjectStorageEndPoint);
+            ObjectStorageManager = ObjectStorageManagerFactory.Create<ALiYunObjectStorageManager>(objectStorageOptions);
 #endif
-            ObjectStorageUploadManager.SetSavePath($"builder/{PlayerSettings.productName}/{EditorUserBuildSettings.activeBuildTarget.ToString()}/{_builderOptions.JobName}/{Application.version}/{_builderOptions.BuildNumber}");
 #endif
         }
 
@@ -65,14 +73,14 @@ namespace GameFrameX.Builder.Editor
             if (_builderOptions.IsUploadApk)
             {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                ObjectStorageUploadManager.UploadFile(apkPath);
+                ObjectStorageManager.UploadFile(new ObjectStorageUploadOptions { LocalPath = apkPath });
 #endif
             }
 
             if (_builderOptions.IsUploadLogFile)
             {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+                ObjectStorageManager.UploadFile(new ObjectStorageUploadOptions { LocalPath = _builderOptions.LogFilePath });
 #endif
             }
         }

@@ -7,11 +7,11 @@
     "YooAsset.Editor",
     "YooAsset.Runtime",
     "YooAsset",
-    "GameFrameX.ObjectStorage.Editor",
+    "GameFrameX.ObjectStorage.Runtime",
     "GameFrameX.LitJSON.Runtime",
-    "GameFrameX.ObjectStorage.QiNiu.Editor",
-    "GameFrameX.ObjectStorage.Tencent.Editor",
-    "GameFrameX.ObjectStorage.ALiYun.Editor"
+    "GameFrameX.ObjectStorage.QiNiu.Runtime",
+    "GameFrameX.ObjectStorage.Tencent.Runtime",
+    "GameFrameX.ObjectStorage.ALiYun.Runtime"
   ],
   "includePlatforms": [
     "Editor"

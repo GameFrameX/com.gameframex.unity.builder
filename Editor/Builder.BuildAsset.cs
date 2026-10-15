@@ -1,5 +1,8 @@
 using System;
 using GameFrameX.Editor;
+#if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
+using GameFrameX.ObjectStorage.Runtime;
+#endif
 using UnityEditor;
 using UnityEngine;
 using YooAsset;
@@ -115,7 +118,7 @@ namespace GameFrameX.Builder.Editor
                 if (_builderOptions.IsUploadLogFile)
                 {
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                    ObjectStorageUploadManager.UploadFile(_builderOptions.LogFilePath);
+                    ObjectStorageManager.UploadFile(new ObjectStorageUploadOptions { LocalPath = _builderOptions.LogFilePath });
 #endif
                 }
 
@@ -129,8 +132,7 @@ namespace GameFrameX.Builder.Editor
                         Debug.Log($"资源包存储路径=>{savePath}");
                         Debug.Log($"资源包上传路径=>{uploadPath}");
 #if ENABLE_GAME_FRAME_X_OBJECT_STORAGE
-                        ObjectStorageUploadManager.SetSavePath(savePath);
-                        ObjectStorageUploadManager.UploadDirectory(uploadPath);
+                        ObjectStorageManager.UploadDirectory(new ObjectStorageUploadOptions { LocalPath = uploadPath, SavePath = savePath });
 #endif
                         Debug.Log($"结束上传资源包=>{buildParameters.PackageName}--{buildParameters.PackageVersion}");
                     }
