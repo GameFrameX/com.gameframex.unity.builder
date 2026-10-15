@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.2.3...2.3.0) (2026-10-15)
+
+
+### Features
+
+* **builder:** 适配对象存储新上传接口 ([a2b206d](https://github.com/gameframex/com.gameframex.unity.builder/commit/a2b206d1d74f3131123c3667b7d9b631b7ae6be5))
+
 ## [2.2.3](https://github.com/gameframex/com.gameframex.unity.builder/compare/2.2.2...2.2.3) (2026-10-10)
 
 

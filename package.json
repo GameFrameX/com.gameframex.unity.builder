@@ -3,7 +3,7 @@
   "displayName": "Game Frame X Builder",
   "category": "GameFrameX",
   "description": "GameFrameX Builder — Unity automated build pipeline package. Drives Unity builds via -executeMethod for Android, iOS, WebGL, and standalone targets with command-line configuration of build number, channel, language, and package version. Supports asset bundle pipelines (Builtin/Scriptable/RawFile), optional HybridCLR integration, optional upload to QiNiu/Tencent/ALiYun object storage, and enterprise WeChat bot notification after builds. Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX Builder — Unity 自动化打包构建功能包。通过 -executeMethod 驱动 Android、iOS、WebGL 和桌面平台的构建，可由命令行参数配置构建号、渠道、语言与包版本。支持资源包构建管线（Builtin/Scriptable/RawFile）、可选 HybridCLR 集成、可选上传至七牛/腾讯/阿里云对象存储，以及构建完成后的企业微信机器人通知。文档：https://gameframex.doc.alianblank.com",
-  "version": "2.2.3",
+  "version": "2.3.0",
   "unity": "2019.4",
   "keywords": [
     "GameFrameX"
